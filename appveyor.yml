@@ -24,7 +24,8 @@ environment:
     - TOOLCHAIN: "vs-12-2013"
       PROJECT_DIR: examples\aglet
 
-    - TOOLCHAIN: "vs-14-2015"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\aglet
 
     # GLEW is missing:
@@ -38,10 +39,12 @@ environment:
     #   PROJECT_DIR: examples\aglet
 
     # Extra toolchains for Drishti {
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\aglet
 
-    - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
       PROJECT_DIR: examples\aglet
     # }
 
