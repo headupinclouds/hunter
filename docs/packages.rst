@@ -28,11 +28,13 @@ List of packages and usage instructions for each package.
    /packages/compression
    /packages/crypto
    /packages/database
+   /packages/datetime
    /packages/graphics
    /packages/testing
    /packages/logging
    /packages/frameworks
    /packages/filesystem
+   /packages/machine-learning
    /packages/messaging
    /packages/math
    /packages/media
