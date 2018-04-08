@@ -12,11 +12,11 @@ hunter_add_version(
     PACKAGE_NAME
     ncnn
     VERSION
-    20180314-p0
+    20180314-p1
     URL
-    "https://github.com/hunter-packages/ncnn/archive/20180314-p0.tar.gz"
+    "https://github.com/hunter-packages/ncnn/archive/20180314-p1.tar.gz"
     SHA1
-    0682261afd501db54e47a081025e0345dfd77962
+    7d39886f172694c07fcae28380ac7fa150f8a820
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
