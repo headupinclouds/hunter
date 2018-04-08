@@ -1,4 +1,5 @@
 # Copyright (c) 2016-2018, Ruslan Baratov
+# Copyright (c) 2018, David Hirvonen
 # All rights reserved.
 
 # !!! DO NOT PLACE HEADER GUARDS HERE !!!
@@ -17,6 +18,12 @@ hunter_add_version(
     "https://github.com/hunter-packages/ncnn/archive/20180314-p1.tar.gz"
     SHA1
     7d39886f172694c07fcae28380ac7fa150f8a820
+)
+
+hunter_cmake_args(
+    ncnn
+    CMAKE_ARGS
+        NCNN_LOCAL_TOOLCHAIN=OFF
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
