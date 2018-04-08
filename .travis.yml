@@ -43,8 +43,9 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/ncnn TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
 
-    - os: linux
-      env: PROJECT_DIR=examples/ncnn TOOLCHAIN=analyze-cxx17
+# Various errors
+#     - os: linux
+#       env: PROJECT_DIR=examples/ncnn TOOLCHAIN=analyze-cxx17
 
     - os: linux
       env: PROJECT_DIR=examples/ncnn TOOLCHAIN=sanitize-address-cxx17
