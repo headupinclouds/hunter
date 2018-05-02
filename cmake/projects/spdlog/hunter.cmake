@@ -68,7 +68,7 @@ hunter_add_version(
     PACKAGE_NAME
     spdlog
     VERSION
-    "0.16.3-p0"
+    "0.16.3-p1"
     URL
     "https://github.com/hunter-packages/spdlog/archive/v0.16.3-p1.tar.gz"
     SHA1
