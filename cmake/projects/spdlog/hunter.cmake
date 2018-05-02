@@ -70,9 +70,9 @@ hunter_add_version(
     VERSION
     "0.16.3-p0"
     URL
-    "https://github.com/hunter-packages/spdlog/archive/v0.16.3-p0.tar.gz"
+    "https://github.com/hunter-packages/spdlog/archive/v0.16.3-p1.tar.gz"
     SHA1
-    559a554779ea604aae752fed748eebe26d8e6587
+    1400ca456ad7c5ba89491f0dd3cd8935a16fe65c
 )  
 
 hunter_cmake_args(
