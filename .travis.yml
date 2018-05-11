@@ -55,8 +55,10 @@ matrix:
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/aglet TOOLCHAIN=sanitize-thread
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/aglet TOOLCHAIN=sanitize-thread
 
     # Extra toolchain for Drishti {
     - os: linux
@@ -70,8 +72,10 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=libcxx
     - os: osx
+      osx_image: xcode8.3
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=osx-10-12
     - os: osx
+      osx_image: xcode8.3
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=ios-nocodesign-10-3
     # Extra toolchain for Drishti {
     - os: osx
