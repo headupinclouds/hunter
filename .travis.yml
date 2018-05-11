@@ -48,10 +48,11 @@ matrix:
         TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/ogles_gpgpu
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/ogles_gpgpu
+    # FIXME: https://travis-ci.org/headupinclouds/hunter/jobs/377920565
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/ogles_gpgpu
 
     - os: linux
       env: >
