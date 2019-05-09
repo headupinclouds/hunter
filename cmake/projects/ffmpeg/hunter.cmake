@@ -1,10 +1,11 @@
-# Copyright (c) 2016-2019, Ruslan Baratov
+# Copyright (c) 2017-2019 Alexandre Pretyman
+# Copyright (c) 2019 David Hirvonen
 # All rights reserved.
-
-# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
 include(hunter_cacheable)
+include(hunter_cmake_args)
+include(hunter_configuration_types)
 include(hunter_download)
 include(hunter_pick_scheme)
 
@@ -12,35 +13,36 @@ hunter_add_version(
     PACKAGE_NAME
     ffmpeg
     VERSION
-    n4.1-dev-45499e557c-p1
+    "4.1-pkgconfig-p0"
     URL
-    "https://github.com/hunter-packages/FFmpeg/archive/n4.1-dev-45499e557c-p1.tar.gz"
+    "http://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2"
     SHA1
-    cc130bde82f4f71fed00496a5a9b9348f427536e
+    dbbecc574c0a57687271165a618353d4ddbd8cfa
 )
 
-hunter_add_version(
-    PACKAGE_NAME
+hunter_configuration_types(ffmpeg CONFIGURATION_TYPES Release)
+hunter_pick_scheme(DEFAULT url_sha1_ffmpeg)
+
+hunter_cmake_args(
     ffmpeg
-    VERSION
-    n4.1-dev-45499e557c-p2
-    URL
-    "https://github.com/hunter-packages/FFmpeg/archive/n4.1-dev-45499e557c-p2.tar.gz"
-    SHA1
-    41935479eda43783440d220bb9da04f4dae5ceaa
+    CMAKE_ARGS
+    DEPENDS_ON_PACKAGES=x264
+    PKGCONFIG_EXPORT_TARGETS=libavformat;libavcodec;libavutil;libswscale;libswresample;libavfilter;libavdevice;libpostproc
 )
 
-hunter_add_version(
-    PACKAGE_NAME
-    ffmpeg
-    VERSION
-    n4.1-dev-45499e557c-p3
-    URL
-    "https://github.com/hunter-packages/FFmpeg/archive/n4.1-dev-45499e557c-p3.tar.gz"
-    SHA1
-    4f14e0ffd920f8cd5e17496189166ce5b6a5983b
-)
-
-hunter_pick_scheme(DEFAULT url_sha1_cmake)
 hunter_cacheable(ffmpeg)
-hunter_download(PACKAGE_NAME ffmpeg)
+
+# https://docs.hunter.sh/en/latest/reference/user-modules/hunter_download.html#hunter-download
+hunter_download(
+    PACKAGE_NAME ffmpeg
+    PACKAGE_INTERNAL_DEPS_ID "8"
+    PACKAGE_UNRELOCATABLE_TEXT_FILES
+    "lib/pkgconfig/libavcodec.pc"
+    "lib/pkgconfig/libavfilter.pc"
+    "lib/pkgconfig/libavformat.pc"
+    "lib/pkgconfig/libavutil.pc"
+    "lib/pkgconfig/libswresample.pc"
+    "lib/pkgconfig/libswscale.pc"
+    "lib/pkgconfig/libavdevice.pc"
+    "lib/pkgconfig/libpostproc.pc"
+)

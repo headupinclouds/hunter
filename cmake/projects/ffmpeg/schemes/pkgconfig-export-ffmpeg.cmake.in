@@ -1,0 +1,49 @@
+# ----------------------------------------------------------------------
+# Auto creation of CMake targets from pkg-config
+#
+# Copyright (C) 2017 Alexandre Pretyman. All rights reserved.
+# Copyright (C) 2019 David Hirvonen. All rights reserved.
+# ----------------------------------------------------------------------
+
+include(hunter_pkgconfig_export_target)
+
+foreach(PKG_CONFIG_MODULE @PKGCONFIG_EXPORT_TARGETS@)
+  hunter_pkgconfig_export_target("${PKG_CONFIG_MODULE}" "@PKG_GENERATE_SHARED@")
+  foreach(_hunter_deps @DEPENDS_ON_PACKAGES@)
+    find_package("${_hunter_deps}" CONFIG REQUIRED)
+    set_property(
+      TARGET
+      "PkgConfig::${PKG_CONFIG_MODULE}"
+      APPEND
+      PROPERTY
+      INTERFACE_LINK_LIBRARIES "PkgConfig::${_hunter_deps}"
+    )
+  endforeach()
+
+  list(APPEND FFMPEG_INCLUDE_DIRS ${${PKG_CONFIG_MODULE}_INCLUDE_DIRS})
+  list(APPEND FFMPEG_LIBRARY_DIRS ${${PKG_CONFIG_MODULE}_LIBRARY_DIRS})
+  list(APPEND FFMPEG_LIBRARIES ${${PKG_CONFIG_MODULE}_LIBRARIES})
+  list(APPEND FFMPEG_PACKAGES PkgConfig::${PKG_CONFIG_MODULE})
+
+  # Leave for discussion:
+  #
+  # foreach(lib ${${PKG_CONFIG_MODULE}_LIBRARIES})
+  #   find_library(${lib}_LIBRARY
+  #     NAMES ${lib}
+  #     HINTS ${${PKG_CONFIG_MODULE}_LIBRARY_DIRS}
+  #   )
+  #   if (${lib}_LIBRARY)
+  #     list(APPEND FFMPEG_LIBRARIES ${${lib}_LIBRARY})
+  #   endif (${lib}_LIBRARY)
+  # endforeach(lib)
+
+  set(FFMPEG_${PKG_CONFIG_MODULE}_FOUND TRUE)
+  set(FFMPEG_${PKG_CONFIG_MODULE}_VERSION ${${PKG_CONFIG_MODULE}_VERSION})
+  
+endforeach()
+
+#list(REMOVE_DUPLICATES FFMPEG_LIBRARIES)
+
+set(FFMPEG_FOUND TRUE)
+set(HAVE_FFMPEG TRUE)
+
